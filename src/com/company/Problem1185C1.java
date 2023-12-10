@@ -1,0 +1,73 @@
+package com.company;
+
+import java.io.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class Problem1185C1 {
+    static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+            int n = scanner.nextInt();
+            int k = scanner.nextInt();
+            int [] array = new int[n];
+            for (int i =0;i<n;i++){
+                array[i] = scanner.nextInt();
+            }
+        System.out.print(0+ " ");
+        for(int i = 1;  i<n ; i++) {
+            int newArray[] = new int[i];
+            for(int j = 0 ; j<=i-1 ;j++) {
+                newArray[j] = array[j];
+            }
+            Arrays.sort(newArray);
+            int sum = array[i];
+            int cnt = 0;
+            for(int j = 0 ; j<=i-1;j++) {
+                sum+=newArray[j];
+                if(sum>k) {
+                    cnt++;
+                }
+            }
+            System.out.print(cnt +" ");
+
+        }
+    }
+    static class Scanner {
+        StringTokenizer st;
+        BufferedReader br;
+
+        public Scanner(InputStream s) {
+            br = new BufferedReader(new InputStreamReader(s));
+        }
+
+        public Scanner(FileReader s) throws FileNotFoundException {
+            br = new BufferedReader(s);
+        }
+
+        public String next() throws IOException {
+            while (st == null || !st.hasMoreTokens())
+                st = new StringTokenizer(br.readLine());
+            return st.nextToken();
+        }
+
+        public int nextInt() throws IOException {
+            return Integer.parseInt(next());
+        }
+
+        public long nextLong() throws IOException {
+            return Long.parseLong(next());
+        }
+
+        public String nextLine() throws IOException {
+            return br.readLine();
+        }
+
+        public double nextDouble() throws IOException {
+            return Double.parseDouble(next());
+        }
+
+        public boolean ready() throws IOException {
+            return br.ready();
+        }
+    }
+}
